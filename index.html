@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Fernanda Coindreau Garcia — Customer Success</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:     #2e2640;
+      --navy-mid: #3a3050;
+      --navy-l:   #4a3d65;
+      --gold:     #d4a8c7;
+      --gold-l:   #f5eef8;
+      --white:    #ffffff;
+      --off:      #faf7ff;
+      --border:   #e4eaf2;
+      --text:     #1e2d45;
+      --muted:    #7a6a8a;
+      --radius:   13px;
+      --sh:       0 4px 24px rgba(11,29,58,.09);
+      --sh-lg:    0 12px 48px rgba(11,29,58,.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Helpers ─────────────────────────────────────── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 96px 0; }
+
+    .tag {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      border-left: 3px solid var(--gold); padding-left: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+      font-weight: 900; color: var(--navy); line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      max-width: 520px; line-height: 1.8;
+    }
+
+    /* ── Scroll fade ─────────────────────────────────── */
+    .fade { opacity: 1; transform: none; }
+    .fade.on { opacity: 1; transform: none; }
+
+    /* ════════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 64px;
+      background: rgba(11,29,58,.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex; align-items: center;
+      transition: box-shadow .3s;
+    }
+    nav.sh { box-shadow: 0 4px 32px rgba(0,0,0,.35); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 28px;
+    }
+    .nav-logo {
+      font-size: 1rem; font-weight: 900; color: var(--white); letter-spacing: .5px;
+    }
+    .nav-logo em { color: var(--gold); font-style: normal; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 600; letter-spacing: .3px;
+      color: rgba(255,255,255,.6); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-sim {
+      background: rgba(201,168,76,.12) !important;
+      border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold) !important;
+      padding: 7px 16px; border-radius: 8px; font-weight: 700 !important;
+      transition: background .2s, border-color .2s !important;
+    }
+    .nav-sim:hover { background: rgba(201,168,76,.22) !important; border-color: var(--gold) !important; }
+    .nav-cta {
+      background: var(--gold) !important; color: var(--navy) !important;
+      padding: 8px 20px; border-radius: 8px; font-weight: 800 !important;
+      transition: opacity .2s !important;
+    }
+    .nav-cta:hover { opacity: .88 !important; }
+
+    /* ════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      padding: 120px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 35%, rgba(201,168,76,.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(28,58,96,.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* subtle grid lines */
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: center;
+    }
+
+    .hero-kicker {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+    }
+    .hero-kicker::before {
+      content: ''; display: block; width: 32px; height: 2px; background: var(--gold);
+    }
+    .hero-kicker span {
+      font-size: .75rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; color: var(--white); line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .hero-name span { color: var(--gold); }
+
+    .hero-tagline {
+      font-size: 1rem; color: rgba(255,255,255,.55);
+      line-height: 1.9; margin-bottom: 36px; max-width: 500px;
+    }
+
+    .lang-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .lang-pill {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px; padding: 7px 16px;
+      font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.75);
+    }
+    .lang-pill .flag { font-size: 1rem; }
+    .lang-pill .level {
+      font-size: .68rem; color: var(--gold); margin-left: 2px; font-weight: 700;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy);
+      padding: 13px 28px; border-radius: 10px;
+      font-weight: 800; font-size: .92rem;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-gold:hover { opacity: .88; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);
+      padding: 13px 28px; border-radius: 10px;
+      font-weight: 600; font-size: .92rem;
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05);
+      transform: translateY(-2px);
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 32px 24px;
+      backdrop-filter: blur(10px); text-align: center;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 2px solid var(--gold); padding: 3px;
+      margin: 0 auto 18px;
+    }
+    .avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-l), #6b4d8a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; font-weight: 900; color: rgba(255,255,255,.85);
+    }
+    .hero-card h3 { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .hero-card p  { font-size: .8rem; color: rgba(255,255,255,.45); margin-bottom: 18px; }
+    .hc-row { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .hc-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: rgba(255,255,255,.04); border-radius: 9px; padding: 10px 12px;
+    }
+    .hc-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .hc-item strong { display: block; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.8); }
+    .hc-item span   { font-size: .72rem; color: rgba(255,255,255,.4); }
+    .avail {
+      display: flex; align-items: center; gap: 7px; justify-content: center;
+      margin-top: 18px; font-size: .75rem; color: rgba(255,255,255,.4);
+    }
+    .avail::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: #22c55e; box-shadow: 0 0 6px #22c55e;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* ════════════════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════════════════ */
+    #about { background: var(--off); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-left { position: relative; }
+    .about-box {
+      aspect-ratio: 4/5; border-radius: 18px;
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-l) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; color: rgba(255,255,255,.1);
+      overflow: hidden; position: relative;
+    }
+    .about-box-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px; background: linear-gradient(to top, rgba(11,29,58,.9), transparent);
+    }
+    .about-box-overlay p {
+      font-size: .85rem; color: rgba(255,255,255,.7); font-style: italic;
+    }
+    .about-float {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--white); border-radius: 14px; padding: 14px 18px;
+      box-shadow: var(--sh-lg); display: flex; align-items: center; gap: 12px;
+    }
+    .af-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gold-l); display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .about-float strong { display: block; font-size: .85rem; font-weight: 800; color: var(--navy); }
+    .about-float span   { font-size: .73rem; color: var(--muted); }
+    .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 18px; }
+    .about-grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px;
+    }
+    .about-chip {
+      background: var(--white); border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0; padding: 14px 16px;
+      box-shadow: var(--sh);
+    }
+    .about-chip strong { display: block; font-size: .83rem; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+    .about-chip span   { font-size: .75rem; color: var(--muted); }
+
+    /* ════════════════════════════════════════════════
+       EXPERIENCE
+    ════════════════════════════════════════════════ */
+    #experience { background: var(--white); }
+    .exp-head { margin-bottom: 56px; }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 19px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    .exp-item { position: relative; padding-left: 54px; padding-bottom: 44px; }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-dot {
+      position: absolute; left: 11px; top: 5px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--white); border: 2.5px solid var(--border); z-index: 1;
+      transition: border-color .3s, background .3s;
+    }
+    .exp-item:hover .exp-dot,
+    .exp-dot.now { border-color: var(--gold); background: var(--gold); }
+
+    .exp-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 28px;
+      box-shadow: var(--sh);
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .exp-card:hover { box-shadow: var(--sh-lg); border-color: #c9d6e8; }
+
+    .exp-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 16px; margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .exp-role { font-size: 1.05rem; font-weight: 800; color: var(--navy); }
+    .exp-period {
+      font-size: .73rem; font-weight: 700; color: var(--gold);
+      background: var(--gold-l); padding: 4px 11px; border-radius: 6px;
+      white-space: nowrap;
+    }
+    .exp-company {
+      font-size: .85rem; font-weight: 600; color: var(--muted);
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .exp-loc { font-size: .73rem; color: #94a3b8; }
+    .ind-tag {
+      font-size: .68rem; font-weight: 700; letter-spacing: .3px;
+      background: #edf2fb; border: 1px solid #d1daf0;
+      color: #4a6fa5; padding: 2px 8px; border-radius: 5px;
+    }
+
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: .87rem; color: var(--muted); line-height: 1.72;
+      padding: 4px 0 4px 18px; position: relative;
+    }
+    .exp-bullets li::before {
+      content: ''; position: absolute; left: 0; top: 13px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    }
+
+    .exp-footer { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .exp-tag {
+      font-size: .7rem; font-weight: 600; color: var(--text);
+      background: var(--off); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 6px;
+    }
+
+    /* ════════════════════════════════════════════════
+       SKILLS
+    ════════════════════════════════════════════════ */
+    #skills { background: var(--off); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .skill-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 22px;
+      transition: box-shadow .25s, border-color .25s, transform .2s;
+    }
+    .skill-card:hover {
+      box-shadow: var(--sh-lg); border-color: #c9d6e8; transform: translateY(-4px);
+    }
+    .sk-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--gold-l);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 14px;
+    }
+    .skill-card h3 { font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .skill-card p  { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ════════════════════════════════════════════════
+       TOOLS
+    ════════════════════════════════════════════════ */
+    #tools { background: var(--navy); }
+    #tools .section-title { color: var(--white); }
+    #tools .section-sub   { color: rgba(255,255,255,.45); }
+    .tools-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 48px; }
+    .tool-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px; padding: 20px 16px;
+      text-align: center;
+      transition: background .2s, border-color .2s, transform .18s;
+      cursor: default;
+    }
+    .tool-card:hover {
+      background: rgba(201,168,76,.1); border-color: rgba(201,168,76,.35);
+      transform: translateY(-3px);
+    }
+    .tool-emoji { font-size: 1.6rem; margin-bottom: 8px; }
+    .tool-name  { font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.75); }
+    .tool-type  { font-size: .67rem; color: rgba(255,255,255,.35); margin-top: 2px; }
+
+    /* ════════════════════════════════════════════════
+       EDUCATION
+    ════════════════════════════════════════════════ */
+    #education { background: var(--off); }
+    .edu-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 52px; }
+    .edu-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 24px;
+      box-shadow: var(--sh); display: flex; gap: 16px;
+      transition: box-shadow .25s;
+    }
+    .edu-card:hover { box-shadow: var(--sh-lg); }
+    .edu-card.span-2 { grid-column: 1/-1; }
+    .edu-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--navy); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .edu-icon.gold-bg { background: var(--gold-l); }
+    .edu-body strong { display: block; font-size: .93rem; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+    .edu-body span   { display: block; font-size: .8rem; color: var(--muted); }
+
+    .cert-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+    .cert-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 30px; padding: 8px 16px;
+      font-size: .78rem; font-weight: 600; color: var(--text);
+      box-shadow: var(--sh);
+    }
+    .cert-pill span { font-size: .95rem; }
+
+    /* ════════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════════ */
+    #contact {
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(201,168,76,.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; position: relative; }
+    .contact-left .section-title { color: var(--white); }
+    .contact-left .section-sub   { color: rgba(255,255,255,.45); }
+    .contact-items { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
+    .ci {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .ci-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .ci strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 2px; }
+    .ci a, .ci span { font-size: .9rem; color: rgba(255,255,255,.75); }
+    .ci a:hover { color: var(--gold); }
+
+    /* Form */
+    .c-form {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px; padding: 34px 30px;
+      backdrop-filter: blur(10px);
+    }
+    .fr { margin-bottom: 14px; }
+    .fr label {
+      display: block; font-size: .72rem; font-weight: 700;
+      letter-spacing: .5px; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 6px;
+    }
+    .fr input, .fr textarea {
+      width: 100%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 9px; padding: 11px 13px;
+      color: var(--white); font-size: .9rem; font-family: inherit; outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .fr input::placeholder, .fr textarea::placeholder { color: rgba(255,255,255,.22); }
+    .fr input:focus, .fr textarea:focus {
+      border-color: var(--gold); background: rgba(255,255,255,.09);
+    }
+    .fr textarea { resize: vertical; min-height: 108px; }
+    .fr-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-send {
+      width: 100%; background: var(--gold); color: var(--navy);
+      border: none; border-radius: 10px; padding: 13px;
+      font-size: .92rem; font-weight: 800; cursor: pointer;
+      margin-top: 4px; transition: opacity .2s, transform .15s;
+    }
+    .btn-send:hover { opacity: .88; transform: translateY(-2px); }
+
+    /* ════════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════════ */
+    footer {
+      background: #060f1f; padding: 26px;
+      text-align: center; font-size: .8rem; color: rgba(255,255,255,.25);
+    }
+    footer em { color: var(--gold); font-style: normal; }
+
+    /* ════════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card  { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-left { display: none; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .tools-grid  { grid-template-columns: repeat(3,1fr); }
+      .edu-grid    { grid-template-columns: 1fr; }
+      .edu-card.span-2 { grid-column: auto; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .fr-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .tools-grid  { grid-template-columns: repeat(2,1fr); }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ════════════════════════════════════════════════
+       PROJECTS
+    ════════════════════════════════════════════════ */
+    #projects { background: var(--white); }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+    .proj-card {
+      background: var(--off); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 30px 28px;
+      box-shadow: var(--sh); display: flex; flex-direction: column; gap: 16px;
+      transition: box-shadow .25s, border-color .25s, transform .2s;
+    }
+    .proj-card:hover { box-shadow: var(--sh-lg); border-color: #c9d6e8; transform: translateY(-4px); }
+    .proj-top { display: flex; align-items: center; gap: 14px; }
+    .proj-icon {
+      width: 50px; height: 50px; border-radius: 13px;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+    }
+    .proj-title { font-size: 1rem; font-weight: 900; color: var(--navy); margin-bottom: 3px; }
+    .proj-type { font-size: .72rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+    .proj-desc { font-size: .85rem; color: var(--muted); line-height: 1.75; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      font-size: .7rem; font-weight: 600; color: var(--text);
+      background: var(--white); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 6px;
+    }
+    .proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .8rem; font-weight: 700;
+      padding: 8px 16px; border-radius: 8px;
+      transition: all .2s;
+    }
+    .proj-link.primary {
+      background: var(--navy); color: var(--white);
+    }
+    .proj-link.primary:hover { background: var(--navy-l); transform: translateY(-1px); }
+    .proj-link.secondary {
+      background: var(--white); color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .proj-link.secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .proj-link.demo {
+      background: var(--gold-l); color: var(--navy);
+      border: 1.5px solid rgba(201,168,76,.3);
+    }
+    .proj-link.demo:hover { background: var(--gold); transform: translateY(-1px); }
+    .proj-coming {
+      font-size: .75rem; color: var(--muted); font-style: italic;
+      display: flex; align-items: center; gap: 6px;
+    }
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">AFC<em>.</em></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="simulator.html" class="nav-sim">🎭 CS Simulator</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ═════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div>
+        <div class="hero-kicker"><span>Customer Success Professional</span></div>
+
+        <h1 class="hero-name">
+          Ana Fernanda<br><span>Coindreau Garcia.</span>
+        </h1>
+
+        <p class="hero-tagline">
+          Customer Success & Account Management<br>
+          Travel Tech &amp; Hospitality Tech<br>
+          Building lasting client relationships across three languages.
+        </p>
+
+        <div class="lang-pills">
+          <div class="lang-pill"><span class="flag">🇲🇽</span> Spanish <span class="level">Native</span></div>
+          <div class="lang-pill"><span class="flag">🇬🇧</span> English <span class="level">Fluent</span></div>
+          <div class="lang-pill"><span class="flag">🇫🇷</span> French <span class="level">Fluent</span></div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#experience" class="btn-gold">See My Experience ↓</a>
+          <a href="#contact" class="btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="hero-card fade">
+        <div class="avatar"><div class="avatar-inner">AFC</div></div>
+        <h3>Ana Fernanda Coindreau G.</h3>
+        <p>Quebec, Canada · Open to remote</p>
+        <div class="hc-row">
+          <div class="hc-item">
+            <span class="hc-icon">✈️</span>
+            <div><strong>Travel & Hospitality Tech</strong><span>4+ years of hands-on experience</span></div>
+          </div>
+          <div class="hc-item">
+            <span class="hc-icon">🤝</span>
+            <div><strong>Account Management</strong><span>15–25 concurrent accounts</span></div>
+          </div>
+          <div class="hc-item">
+            <span class="hc-icon">🤖</span>
+            <div><strong>AI-Augmented Workflows</strong><span>Claude & ChatGPT daily user</span></div>
+          </div>
+        </div>
+        <div class="avail">Available for new opportunities</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ═════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-left fade">
+        <div class="about-box">
+          <img src="photo.jpg" alt="Ana Fernanda Coindreau Garcia" style="width:100%;height:100%;object-fit:contain;object-position:center top;position:absolute;inset:0;border-radius:18px;background:#2e2640;">
+          <div class="about-box-overlay">
+            <p>"Trilingual. Detail-oriented. Client-obsessed."</p>
+          </div>
+        </div>
+        <div class="about-float">
+          <div class="af-icon">🏆</div>
+          <div>
+            <strong>Zero Escalations</strong>
+            <span>120+ monthly reservations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade">
+        <span class="tag">About Me</span>
+        <h2 class="section-title">Where precision meets people.</h2>
+        <p class="about-text" style="color:var(--muted);line-height:1.85;margin-bottom:16px">
+          I'm a trilingual Customer Success and Account Management professional with a strong track record
+          in <strong>travel tech and hospitality tech</strong>. From tour operator platforms to boutique
+          hotel PMS systems, I've spent the past several years turning complex software into smooth,
+          human experiences — for clients who don't have time for friction.
+        </p>
+        <p style="color:var(--muted);line-height:1.85;margin-bottom:16px">
+          I bring structure to ambiguity: I write SOPs, design onboarding flows, lead 24/7 trip support,
+          and use AI tools like Claude and ChatGPT daily to communicate faster and more clearly.
+          I operate comfortably across Spanish, English, and French — which opens doors in LATAM,
+          North American, and European markets.
+        </p>
+        <p style="color:var(--muted);line-height:1.85;">
+          My hospitality background (Universidad Anáhuac · Le Cordon Bleu) gives me genuine empathy
+          for operators on the ground. I don't just manage accounts — I become a strategic partner.
+        </p>
+        <div class="about-grid-2">
+          <div class="about-chip">
+            <strong>100% Account Retention</strong>
+            <span>Rebuilt damaged client relationship at Showcare</span>
+          </div>
+          <div class="about-chip">
+            <strong>Zero Escalations</strong>
+            <span>25+ concurrent engagements at Global Tourisme</span>
+          </div>
+          <div class="about-chip">
+            <strong>SOP Author</strong>
+            <span>Documented processes from the ground up</span>
+          </div>
+          <div class="about-chip">
+            <strong>AI-Augmented</strong>
+            <span>Claude & ChatGPT integrated into daily workflow</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ════════════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="exp-head fade">
+      <span class="tag">Experience</span>
+      <h2 class="section-title">Four roles. Measurable results.</h2>
+      <p class="section-sub">A consistent record of ownership, zero escalations, and clients who stay.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 1 -->
+      <div class="exp-item fade">
+        <div class="exp-dot now"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Project Manager</div>
+            <div class="exp-period">Mar 2024 — Present</div>
+          </div>
+          <div class="exp-company">
+            Deztination
+            <span class="exp-loc">📍 Quebec, QC</span>
+            <span class="ind-tag">Travel Tech</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Serve as sole point of contact for <strong>15+ accounts</strong>, owning all client communication and relationship management end-to-end.</li>
+            <li>Authored company SOPs from the ground up, creating documented workflows that standardized team processes and reduced onboarding time for new staff.</li>
+            <li>Use <strong>Claude and ChatGPT daily</strong> to streamline client communications, draft proposals, and optimize internal workflows.</li>
+            <li>Designed all client onboarding materials — welcome guides, trip briefings, process documentation — ensuring a consistent and professional first impression.</li>
+            <li>Provide <strong>24/7 trip support</strong>, managing real-time issues and escalations with urgency and calm across time zones and languages.</li>
+          </ul>
+          <div class="exp-footer">
+            <span class="exp-tag">Account Management</span>
+            <span class="exp-tag">SOP Writing</span>
+            <span class="exp-tag">Onboarding Design</span>
+            <span class="exp-tag">Claude & ChatGPT</span>
+            <span class="exp-tag">24/7 Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="exp-item fade">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Project Manager</div>
+            <div class="exp-period">May 2023 — Feb 2024</div>
+          </div>
+          <div class="exp-company">
+            Global Tourisme
+            <span class="exp-loc">📍 Quebec, QC</span>
+            <span class="ind-tag">Travel & Tourism</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Managed <strong>25+ concurrent client engagements</strong> simultaneously — coordinating logistics, timelines, and expectations across a high-volume portfolio.</li>
+            <li>Processed <strong>120+ reservations monthly</strong> with precision, maintaining zero data or booking errors across the entire tenure.</li>
+            <li>Achieved <strong>zero escalations</strong> throughout the role — a reflection of proactive communication and rigorous follow-through.</li>
+            <li>Built strong client relationships through consistent, clear communication in English, Spanish, and French.</li>
+          </ul>
+          <div class="exp-footer">
+            <span class="exp-tag">High-Volume Portfolio</span>
+            <span class="exp-tag">Zero Escalations</span>
+            <span class="exp-tag">Multilingual</span>
+            <span class="exp-tag">Reservations Management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="exp-item fade">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Sr. Housing Coordinator</div>
+            <div class="exp-period">Feb 2022 — May 2023</div>
+          </div>
+          <div class="exp-company">
+            Showcare Event Solutions
+            <span class="exp-loc">📍 Montreal, QC</span>
+            <span class="ind-tag">Events & Hospitality</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Managed <strong>5 large-scale events</strong>, coordinating over <strong>2,500+ room nights</strong> across hotel blocks and event properties.</li>
+            <li>Inherited a damaged client relationship and successfully <strong>rebuilt full trust</strong>, achieving <strong>100% account retention</strong> — an outcome that required direct ownership, honest communication, and sustained follow-through.</li>
+            <li>Partnered with hotel partners and event organizers to ensure seamless group housing experiences from contract to checkout.</li>
+            <li>Acted as primary escalation point for housing issues across multiple simultaneous events and time-sensitive scenarios.</li>
+          </ul>
+          <div class="exp-footer">
+            <span class="exp-tag">Relationship Recovery</span>
+            <span class="exp-tag">100% Retention</span>
+            <span class="exp-tag">2,500+ Room Nights</span>
+            <span class="exp-tag">Event Management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="exp-item fade">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-top">
+            <div class="exp-role">Central Support Team Lead</div>
+            <div class="exp-period">Mar 2021 — Feb 2022</div>
+          </div>
+          <div class="exp-company">
+            Life House
+            <span class="exp-loc">📍 Montreal, QC</span>
+            <span class="ind-tag">Hospitality Tech</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Led multilingual support operations across a portfolio of <strong>15+ properties</strong> using the Mews PMS platform, serving guests and property teams in English, Spanish, and French.</li>
+            <li>Maintained a <strong>30-minute SLA</strong> for all incoming support requests, consistently meeting or exceeding response targets.</li>
+            <li>Onboarded and trained <strong>4 new team members</strong>, developing training materials and coaching protocols that accelerated ramp time.</li>
+            <li>Conducted <strong>nightly audits</strong> across all properties, identifying discrepancies and ensuring data integrity in PMS records ahead of next-day operations.</li>
+          </ul>
+          <div class="exp-footer">
+            <span class="exp-tag">Mews PMS</span>
+            <span class="exp-tag">Team Lead</span>
+            <span class="exp-tag">30-min SLA</span>
+            <span class="exp-tag">Multilingual Support</span>
+            <span class="exp-tag">Nightly Audits</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PROJECTS ══════════════════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="fade">
+      <span class="tag">AI Projects</span>
+      <h2 class="section-title">Built with AI. Used in real work.</h2>
+      <p class="section-sub">Two tools I built myself — not just used, but actually created — to solve real problems in my day-to-day work.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="proj-card fade">
+        <div class="proj-top">
+          <div class="proj-icon">🧾</div>
+          <div>
+            <div class="proj-title">Invoice Automation Script</div>
+            <div class="proj-type">Python · Automation</div>
+          </div>
+        </div>
+        <p class="proj-desc">
+          A Python script that reads PDF invoices from Google Drive, automatically extracts vendor names, amounts, dates and invoice numbers, and fills an Excel report — eliminating manual weekly data entry completely.
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">PDF Parsing</span>
+          <span class="proj-tag">Excel Automation</span>
+          <span class="proj-tag">Google Drive</span>
+          <span class="proj-tag">Real Use Case</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Fernanda-Coindreau/invoice-automation" target="_blank" class="proj-link primary">⌥ View Code</a>
+          <span class="proj-coming">🎬 Demo video coming soon</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="proj-card fade">
+        <div class="proj-top">
+          <div class="proj-icon">🎭</div>
+          <div>
+            <div class="proj-title">CS Difficult Client Simulator</div>
+            <div class="proj-type">HTML · AI · Training Tool</div>
+          </div>
+        </div>
+        <p class="proj-desc">
+          An AI-powered training tool where you practice handling difficult customer scenarios — 4 real CS situations, 3 difficulty levels (Trainee → Pro → Expert), live scoring, coaching feedback, and expert rewrites after every response.
+        </p>
+        <div class="proj-tags">
+          <span class="proj-tag">Claude API</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">3 Difficulty Levels</span>
+          <span class="proj-tag">Live Scoring</span>
+          <span class="proj-tag">CS Training</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://fernanda-coindreau.github.io/cs-ticket-simulator" target="_blank" class="proj-link primary">▶ Try Live Demo</a>
+          <a href="https://github.com/Fernanda-Coindreau/cs-ticket-simulator" target="_blank" class="proj-link secondary">⌥ View Code</a>
+          <span class="proj-coming">🎬 Demo video coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ════════════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="fade">
+      <span class="tag">Core Skills</span>
+      <h2 class="section-title">What I do best.</h2>
+      <p class="section-sub">Developed through real work, high-stakes accounts, and a genuine love for getting things right.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade">
+        <div class="sk-icon">🤝</div>
+        <h3>Account Management</h3>
+        <p>Juggling 15–25+ accounts simultaneously while making every client feel like the only one. Proactive touchpoints, health monitoring, and strategic relationship-building.</p>
+      </div>
+      <div class="skill-card fade">
+        <div class="sk-icon">🚀</div>
+        <h3>Client Onboarding</h3>
+        <p>Designing structured, human onboarding journeys — welcome materials, training sessions, milestone tracking — that drive fast time-to-value and confident product adoption.</p>
+      </div>
+      <div class="skill-card fade">
+        <div class="sk-icon">🔧</div>
+        <h3>SOP Writing & Process Design</h3>
+        <p>Translating chaos into documented, repeatable workflows. I've built SOPs from scratch that became the operating foundation for entire teams.</p>
+      </div>
+      <div class="skill-card fade">
+        <div class="sk-icon">🛡️</div>
+        <h3>Relationship Recovery</h3>
+        <p>Taking on difficult accounts and turning them around through transparency, consistency, and committed follow-through. 100% retention where it mattered most.</p>
+      </div>
+      <div class="skill-card fade">
+        <div class="sk-icon">⚡</div>
+        <h3>Escalation Handling</h3>
+        <p>Staying calm when clients aren't. 24/7 support experience, 30-min SLA track record, and a zero-escalation record at Global Tourisme across 25+ accounts.</p>
+      </div>
+      <div class="skill-card fade">
+        <div class="sk-icon">🌐</div>
+        <h3>Multilingual Support</h3>
+        <p>Native Spanish, fluent English and French — covering LATAM, North American, and European client bases. Language as a true superpower, not a line on a résumé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOLS ══════════════════════════════════════════ -->
+<section id="tools">
+  <div class="container">
+    <div class="fade">
+      <span class="tag" style="color:var(--gold)">Tools & Platforms</span>
+      <h2 class="section-title">The stack I work in.</h2>
+      <p class="section-sub">From PMS systems to AI workflows — I pick up new tools fast and use them well.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card fade">
+        <div class="tool-emoji">☁️</div>
+        <div class="tool-name">Salesforce</div>
+        <div class="tool-type">CRM</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">🏨</div>
+        <div class="tool-name">Mews</div>
+        <div class="tool-type">Hospitality PMS</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">🗄️</div>
+        <div class="tool-name">Zoho CRM</div>
+        <div class="tool-type">CRM</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">💳</div>
+        <div class="tool-name">Stripe</div>
+        <div class="tool-type">Payments</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">📋</div>
+        <div class="tool-name">Jira</div>
+        <div class="tool-type">Project Mgmt</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">🎬</div>
+        <div class="tool-name">Loom</div>
+        <div class="tool-type">Async Video</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">💬</div>
+        <div class="tool-name">Slack</div>
+        <div class="tool-type">Communication</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">🔗</div>
+        <div class="tool-name">ClientLinq</div>
+        <div class="tool-type">Client Mgmt</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">🤖</div>
+        <div class="tool-name">Claude</div>
+        <div class="tool-type">AI · Daily Use</div>
+      </div>
+      <div class="tool-card fade">
+        <div class="tool-emoji">✨</div>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-type">AI · Daily Use</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ═════════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="fade">
+      <span class="tag">Education</span>
+      <h2 class="section-title">The foundation.</h2>
+      <p class="section-sub">Hospitality management meets tourism — with a layer of cutting-edge AI certifications on top.</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card fade">
+        <div class="edu-icon"><span style="font-size:1.2rem">🎓</span></div>
+        <div class="edu-body">
+          <strong>Bachelor's in Restaurant Management</strong>
+          <span>Universidad Anáhuac México · Le Cordon Bleu</span>
+          <span style="color:#94a3b8;font-size:.72rem;margin-top:4px;display:block">Hospitality & Service Excellence</span>
+        </div>
+      </div>
+      <div class="edu-card fade">
+        <div class="edu-icon"><span style="font-size:1.2rem">📜</span></div>
+        <div class="edu-body">
+          <strong>DEC in Tourism</strong>
+          <span>Collège Mérici · Quebec, QC</span>
+          <span style="color:#94a3b8;font-size:.72rem;margin-top:4px;display:block">Travel, Tourism & Destination Management</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px" class="fade">
+      <p style="font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px">
+        Certifications
+      </p>
+      <div class="cert-row">
+        <div class="cert-pill"><span>🤖</span> Anthropic Claude 101</div>
+        <div class="cert-pill"><span>⚙️</span> Introduction to Agent Skills</div>
+        <div class="cert-pill"><span>📈</span> The Art of Sales · Northwestern / Coursera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ═══════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-left fade">
+        <span class="tag">Contact</span>
+        <h2 class="section-title">Let's talk.</h2>
+        <p class="section-sub">
+          Looking for a Customer Success or Account Management role where relationships,
+          precision, and languages all matter. Let's connect.
+        </p>
+        <div class="contact-items">
+          <div class="ci">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="/cdn-cgi/l/email-protection#52343720313d3b3c3533206b6312353f333b3e7c313d3f"><span class="__cf_email__" data-cfemail="1c7a796e7f7375727b7d6e252d5c7b717d7570327f7371">[email&#160;protected]</span></a>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">💼</div>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="https://www.linkedin.com/in/ana-fernanda-coindreau-garcia/" target="_blank">linkedin.com/in/ana-fernanda-coindreau-garcia</a>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span>Quebec, Canada · Open to remote &amp; hybrid</span>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">🌐</div>
+            <div>
+              <strong>Languages</strong>
+              <span>Spanish · English · French</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-form fade">
+        <div class="fr-2">
+          <div class="fr"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="fr"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="fr"><label>Email</label><input type="email" placeholder="jane@company.com"></div>
+        <div class="fr"><label>Company & Role</label><input type="text" placeholder="Acme Inc · Head of CS"></div>
+        <div class="fr">
+          <label>Message</label>
+          <textarea placeholder="Tell me about the opportunity..."></textarea>
+        </div>
+        <button class="btn-send" id="send-btn">Send Message →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 <em>Ana Fernanda Coindreau Garcia</em> · Customer Success & Account Management · Quebec, Canada</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav shadow on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('sh', scrollY > 40));
+
+  // Scroll fade-in
+  const io = new IntersectionObserver(entries =>
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Contact form feedback
+  document.getElementById('send-btn').addEventListener('click', () => {
+    const btn = document.getElementById('send-btn');
+    btn.textContent = 'Message Sent
