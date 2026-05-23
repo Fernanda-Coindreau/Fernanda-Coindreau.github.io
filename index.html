@@ -654,9 +654,11 @@
 
       <div class="about-left fade">
         <div class="about-box">
-          <img src="photo.jpg" alt="Ana Fernanda Coindreau Garcia" style="width:100%;height:100%;object-fit:contain;object-position:center top;position:absolute;inset:0;border-radius:18px;background:#2e2640;">
+          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;border-radius:18px;background:#2e2640;">
+            <source src="intro.mp4" type="video/mp4">
+          </video>
           <div class="about-box-overlay">
-            <p>"Trilingual. Detail-oriented. Client-obsessed."</p>
+            <p>"Technology doesn't replace the CSM. It gives them superpowers to be more human."</p>
           </div>
         </div>
         <div class="about-float">
@@ -849,7 +851,7 @@
     <div class="fade">
       <span class="tag">AI Projects</span>
       <h2 class="section-title">Built with AI. Used in real work.</h2>
-      <p class="section-sub">Two tools I built myself — not just used, but actually created — to solve real problems in my day-to-day work.</p>
+      <p class="section-sub">A growing collection of AI-powered tools I built myself — not just used, but actually created — to solve real problems in Customer Success and hospitality tech.</p>
     </div>
     <div class="projects-grid">
 
@@ -865,6 +867,8 @@
         <p class="proj-desc">
           A Python script that reads PDF invoices from Google Drive, automatically extracts vendor names, amounts, dates and invoice numbers, and fills an Excel report — eliminating manual weekly data entry completely.
         </p>
+        <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:12px 0 6px">Technical Stack & AI Implementation</p>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Built with Python using pdfplumber for document parsing and openpyxl for Excel generation. Deployed via macOS Automator as a folder-action trigger — runs automatically when new invoices land in the monitored OneDrive folder, with no manual intervention required.</p>
         <div class="proj-tags">
           <span class="proj-tag">Python</span>
           <span class="proj-tag">PDF Parsing</span>
@@ -889,6 +893,8 @@
         <p class="proj-desc">
           An AI-powered training tool where you practice handling difficult customer scenarios — 4 real CS situations, 3 difficulty levels (Trainee → Pro → Expert), live scoring, coaching feedback, and expert rewrites after every response.
         </p>
+        <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:12px 0 6px">Technical Stack & AI Implementation</p>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Built in vanilla JavaScript with direct Claude API integration via browser-side fetch. Uses advanced prompt engineering to maintain consistent character personas across difficulty levels, and runs two parallel API calls per exchange — one for the client simulation, one for real-time coaching feedback and scoring.</p>
         <div class="proj-tags">
           <span class="proj-tag">Claude API</span>
           <span class="proj-tag">JavaScript</span>
@@ -914,6 +920,8 @@
         <p class="proj-desc">
           An AI-powered support tool for hospitality and events teams. Generates realistic tickets across 5 categories and 4 urgency levels, challenges agents to prioritize them correctly, then generates or grades responses in English, French, or Spanish using the Claude API.
         </p>
+        <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:12px 0 6px">Technical Stack & AI Implementation</p>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Built in JavaScript with Claude API for dynamic ticket generation, multilingual translation, and response grading. Implements a drag-and-drop priority triage system with real-time correctness validation — locking the response workflow until prioritization is correct, simulating real support queue conditions.</p>
         <div class="proj-tags">
           <span class="proj-tag">Claude API</span>
           <span class="proj-tag">JavaScript</span>
@@ -936,6 +944,8 @@
             </div>
           </div>
           <p class="proj-desc">An AI-powered retention tool for B2B Customer Success Managers. Input account health signals via sliders, get an instant AI-generated Retention Playbook and personalized outreach email — calibrated to risk level.</p>
+          <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:12px 0 6px">Technical Stack & AI Implementation</p>
+          <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Built in JavaScript with Claude API using structured prompt design to interpret multi-variable health scores and generate calibrated retention strategies. The prompt dynamically adjusts tone and urgency based on risk level — producing outputs that scale from light check-ins to full account recovery plans.</p>
           <div class="proj-tags">
             <span class="proj-tag">Claude API</span>
             <span class="proj-tag">JavaScript</span>
@@ -960,6 +970,8 @@
   <div class="proj-desc">
     A browser-based AI orchestration engine for hospitality CS teams. Type a natural language command and watch AI agents handle guest check-ins, maintenance tickets, and occupancy optimization in real time.
   </div>
+  <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:12px 0 6px">Technical Stack & AI Implementation</p>
+  <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">Built with JavaScript and Tailwind CSS, using Claude API to interpret natural language commands and route them to specialized autonomous agents. Each agent operates independently with its own context window and task scope — demonstrating multi-agent orchestration patterns applied to real hospitality workflows.</p>
   <div class="proj-tags">
     <span class="proj-tag">Claude API</span>
     <span class="proj-tag">JavaScript</span>
