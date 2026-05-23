@@ -254,7 +254,7 @@
       font-size: .85rem; color: rgba(255,255,255,.7); font-style: italic;
     }
     .about-float {
-      position: absolute; bottom: -20px; right: -20px;
+      position: absolute; bottom: 80px; right: -20px;
       background: var(--white); border-radius: 14px; padding: 14px 18px;
       box-shadow: var(--sh-lg); display: flex; align-items: center; gap: 12px;
     }
@@ -654,9 +654,10 @@
 
       <div class="about-left fade">
         <div class="about-box">
-          <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;border-radius:18px;background:#2e2640;">
+          <video id="about-video" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;border-radius:18px;background:#2e2640;">
             <source src="intro.mp4" type="video/mp4">
           </video>
+          <button id="unmute-btn" onclick="toggleMute()" style="position:absolute;top:14px;right:14px;z-index:10;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:7px 12px;color:white;font-size:.75rem;font-weight:700;cursor:pointer;backdrop-filter:blur(6px);">🔇 Unmute</button>
           <div class="about-box-overlay">
             <p>"Technology doesn't replace the CSM. It gives them superpowers to be more human."</p>
           </div>
@@ -1210,6 +1211,14 @@
   // Nav shadow on scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('sh', scrollY > 40));
+
+  // Mute toggle for about video
+  function toggleMute() {
+    const video = document.getElementById('about-video');
+    const btn = document.getElementById('unmute-btn');
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? '🔇 Unmute' : '🔊 Mute';
+  }
 
   // Scroll fade-in
   const io = new IntersectionObserver(entries =>
