@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Response Generator - AI-Powered Customer Success Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>CS Response Generator</h1>
+            <p class="subtitle">AI-Powered Customer Success Assistant with Two-Step Reasoning</p>
+        </header>
+
+        <!-- API Key Management Section -->
+        <div class="api-key-section" id="apiKeySection">
+            <div class="api-key-input-group">
+                <label for="apiKeyInput">Anthropic API Key</label>
+                <div class="input-with-button">
+                    <input 
+                        type="password" 
+                        id="apiKeyInput" 
+                        placeholder="Enter your Anthropic API key (sk-ant-...)"
+                        autocomplete="off"
+                    >
+                    <button id="saveApiKeyBtn" class="btn btn-primary">Save Key</button>
+                </div>
+                <p class="api-key-note">
+                    <strong>Security Note:</strong> Your API key is stored in browser localStorage (persistent until cleared). 
+                    This is a frontend-only app, so the key is visible in browser Network tab.
+                </p>
+            </div>
+            <button id="clearApiKeyBtn" class="btn btn-danger" style="display: none;">Clear API Key</button>
+        </div>
+
+        <!-- Main Application (hidden until API key is set) -->
+        <div class="main-app" id="mainApp" style="display: none;">
+            
+            <!-- Input Section -->
+            <div class="section">
+                <label for="inputText">Client's Latest Message</label>
+                <textarea 
+                    id="inputText" 
+                    placeholder="Paste the email or message you need to respond to"
+                    rows="6"
+                ></textarea>
+                
+                <label for="contextText" style="margin-top: 1rem;">Context / Background Info (optional)</label>
+                <textarea 
+                    id="contextText" 
+                    placeholder="Any background info the AI should know: prior agreements, numbers, dates already discussed, etc. Leave blank if not needed."
+                    rows="3"
+                    style="font-size: 0.9rem; opacity: 0.9;"
+                ></textarea>
+                
+                <button id="generateBtn" class="btn btn-primary btn-large">
+                    <span id="generateBtnText">Generate Response</span>
+                    <span id="generateBtnLoader" class="loader" style="display: none;"></span>
+                </button>
+            </div>
+
+            <!-- Mini Summary Card (appears after classification) -->
+            <div id="miniSummary" class="mini-summary" style="display: none;">
+                <h3>📊 Classification Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Language</span>
+                        <span id="summaryLanguage" class="summary-value"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Tone</span>
+                        <span id="summaryTone" class="summary-value"></span>
+                    </div>
+                    <div class="summary-item" style="grid-column: 1 / -1;">
+                        <span class="summary-label">Sentiment</span>
+                        <span id="summarySentiment" class="summary-value badge"></span>
+                    </div>
+                </div>
+                <div class="summary-topics">
+                    <span class="summary-label">Topics:</span>
+                    <div id="summaryTopicsList"></div>
+                </div>
+                <div class="summary-key-issue">
+                    <span class="summary-label">Key Issues:</span>
+                    <ul id="summaryKeyIssues"></ul>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="section" id="outputSection" style="display: none;">
+                <div class="output-header">
+                    <label>Generated Response</label>
+                    <button id="copyBtn" class="btn btn-secondary">
+                        <span id="copyBtnText">📋 Copy to Clipboard</span>
+                        <span id="copyBtnSuccess" style="display: none;">✅ Copied!</span>
+                    </button>
+                </div>
+                <div id="outputText" class="output-text"></div>
+            </div>
+
+            <!-- Error Display -->
+            <div id="errorDisplay" class="error-display" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
